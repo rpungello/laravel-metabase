@@ -4,7 +4,10 @@
     "keywords": [
         "Rob Pungello",
         "laravel",
-        "laravel-metabase"
+        "metabase",
+        "sdk",
+        "integration",
+        "reporting"
     ],
     "homepage": "https://github.com/rpungello/laravel-metabase",
     "license": "MIT",
