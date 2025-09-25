@@ -2,9 +2,9 @@
 
 namespace Rpungello\Metabase;
 
+use Rpungello\Metabase\Commands\MetabaseCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Rpungello\Metabase\Commands\MetabaseCommand;
 
 class MetabaseServiceProvider extends PackageServiceProvider
 {
