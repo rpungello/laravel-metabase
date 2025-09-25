@@ -8,5 +8,5 @@ enum NumberSeparator: string
     case European = ',.';
     case None = '.';
     case Spaces = ', ';
-    case Apostrophe = ".’";
+    case Apostrophe = '.’';
 }

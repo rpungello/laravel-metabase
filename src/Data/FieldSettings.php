@@ -11,5 +11,5 @@ class FieldSettings extends Data
     public function __construct(
         public ?NumberSeparator $number_separators,
         public ?Display $view_as
-    ){}
+    ) {}
 }
