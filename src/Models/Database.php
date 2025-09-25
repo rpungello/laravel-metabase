@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Database extends Model
 {
+    protected $table = 'metabase';
+
     protected $fillable = [
-        'model_type',
-        'model_id',
+        'source_type',
+        'source_id',
         'database_id',
         'schema_version',
     ];

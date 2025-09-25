@@ -9,6 +9,6 @@ trait HasMetabaseDatabase
 {
     public function metabase(): MorphOne
     {
-        return $this->morphOne(Database::class, 'model');
+        return $this->morphOne(Database::class, 'source');
     }
 }
