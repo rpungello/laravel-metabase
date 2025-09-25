@@ -8,9 +8,7 @@ use Spatie\LaravelData\Data;
 class Table extends Data
 {
     /**
-     * @param string $name
-     * @param string|null $description
-     * @param Field[] $fields
+     * @param  Field[]  $fields
      */
     public function __construct(
         public string $name,
