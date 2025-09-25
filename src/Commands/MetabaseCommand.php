@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Rpungello\Metabase\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MetabaseCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-metabase';
 
     public $description = 'My command';
 
