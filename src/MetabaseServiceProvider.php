@@ -20,5 +20,12 @@ class MetabaseServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasMigration('create_metabase_table')
             ->hasCommand(MetabaseCommand::class);
+
+        $this->app->singleton(Metabase::class, function ($app) {
+            return new Metabase(
+                config('metabase.base_uri'),
+                config('metabase.api_key')
+            );
+        });
     }
 }
