@@ -2,7 +2,6 @@
 
 namespace Rpungello\Metabase\Concerns;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Rpungello\Metabase\Models\Database;
 
