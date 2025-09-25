@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-metabase` will be documented in this file.
 
+## 0.1.2 - 2025-09-25
+
+Added helper function for updating fields
+
 ## 0.1.1 - 2025-09-25
 
 Various fixes + helper functions
