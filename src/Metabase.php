@@ -2,10 +2,11 @@
 
 namespace Rpungello\Metabase;
 
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\ValidationException;
 use Rpungello\Metabase\Data\Database;
 use Rpungello\Metabase\Data\DatabaseMetadata;
 use Rpungello\Metabase\Data\Field;
@@ -61,7 +62,20 @@ readonly class Metabase
      */
     private function put(string $uri, Data $data): array
     {
-        return $this->pendingRequest()->put($uri, $data)->json();
+        try {
+            return $this->pendingRequest()->put($uri, $data)->json();
+        } catch (RequestException $ex) {
+            $json = json_decode($ex->response->getBody()->getContents(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw $ex;
+            }
+
+            if (! empty($errors = $json['specific-errors'])) {
+                throw ValidationException::withMessages($errors);
+            }
+
+            throw $ex;
+        }
     }
 
     private function pendingRequest(): PendingRequest
