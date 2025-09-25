@@ -18,4 +18,12 @@ enum SemanticType: string
     case AvatarUrl = 'type/AvatarURL';
     case ImageUrl = 'type/ImageURL';
     case Url = 'type/URL';
+    case Quantity = 'type/Quantity';
+    case Currency = 'type/Currency';
+    case Discount = 'type/Discount';
+    case Income = 'type/Income';
+    case Score = 'type/Score';
+    case Percentage = 'type/Percentage';
+    case Latitude = 'type/Latitude';
+    case Longitude = 'type/Longitude';
 }
