@@ -2,15 +2,21 @@
 
 namespace Rpungello\Metabase;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Rpungello\Metabase\Data\Database;
+use Rpungello\Metabase\Data\DatabaseMetadata;
 
-class Metabase
+readonly class Metabase
 {
-    public function __construct(private readonly string $baseUri, private readonly string $apiKey) {}
+    public function __construct(private string $baseUri, private string $apiKey)
+    {
+
+    }
 
     /**
      * @throws ConnectionException
@@ -19,6 +25,17 @@ class Metabase
     public function getDatabase(int $id): Database
     {
         return Database::from($this->get("database/$id"));
+    }
+
+    /**
+     * @throws ConnectionException
+     * @throws RequestException
+     */
+    public function getDatabaseMetadata(Database|int $database): DatabaseMetadata
+    {
+        $id = is_int($database) ? $database : $database->id;
+
+        return DatabaseMetadata::from($this->get("database/$id/metadata"));
     }
 
     /**
