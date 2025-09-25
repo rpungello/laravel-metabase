@@ -18,8 +18,7 @@ class MetabaseServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-metabase')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_metabase_table')
+            ->hasMigration('create_metabase_table')
             ->hasCommand(MetabaseCommand::class);
     }
 }
