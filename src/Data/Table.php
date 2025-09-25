@@ -10,7 +10,7 @@ use Spatie\LaravelData\Data;
 class Table extends Data
 {
     /**
-     * @param  Collection<Field>  $fields
+     * @param  Collection<int, Field>  $fields
      */
     public function __construct(
         public string $name,
