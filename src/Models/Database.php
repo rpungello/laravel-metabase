@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
-use Phiki\Transformers\Meta;
 use Rpungello\Metabase\Data\DatabaseMetadata;
 use Rpungello\Metabase\Facades\Metabase;
 
