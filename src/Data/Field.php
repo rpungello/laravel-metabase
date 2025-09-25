@@ -16,5 +16,5 @@ class Field extends Data
         public string $visibility_type,
         public string $display_name,
         public string $base_type,
-    ){}
+    ) {}
 }

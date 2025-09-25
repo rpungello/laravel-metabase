@@ -12,5 +12,5 @@ class Table extends Data
         public ?string $description,
         #[DataCollectionOf(Field::class)]
         public array $fields,
-    ){}
+    ) {}
 }

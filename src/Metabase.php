@@ -2,9 +2,7 @@
 
 namespace Rpungello\Metabase;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
@@ -13,10 +11,7 @@ use Rpungello\Metabase\Data\DatabaseMetadata;
 
 readonly class Metabase
 {
-    public function __construct(private string $baseUri, private string $apiKey)
-    {
-
-    }
+    public function __construct(private string $baseUri, private string $apiKey) {}
 
     /**
      * @throws ConnectionException

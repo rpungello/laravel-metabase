@@ -12,5 +12,5 @@ class DatabaseMetadata extends Data
         public string $name,
         #[DataCollectionOf(Table::class)]
         public array $tables,
-    ){}
+    ) {}
 }
