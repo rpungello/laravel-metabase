@@ -10,9 +10,7 @@ use Spatie\LaravelData\Data;
 class Table extends Data
 {
     /**
-     * @param string $name
-     * @param string|null $description
-     * @param Collection<Field> $fields
+     * @param  Collection<Field>  $fields
      */
     public function __construct(
         public string $name,
@@ -22,8 +20,6 @@ class Table extends Data
     ) {}
 
     /**
-     * @param string $name
-     * @return Field
      * @throws ItemNotFoundException
      */
     public function getField(string $name): Field

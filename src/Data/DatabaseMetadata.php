@@ -10,9 +10,7 @@ use Spatie\LaravelData\Data;
 class DatabaseMetadata extends Data
 {
     /**
-     * @param array $features
-     * @param string $name
-     * @param Collection<Table> $tables
+     * @param  Collection<Table>  $tables
      */
     public function __construct(
         public array $features,
@@ -22,8 +20,6 @@ class DatabaseMetadata extends Data
     ) {}
 
     /**
-     * @param string $name
-     * @return Table
      * @throws ItemNotFoundException
      */
     public function getTable(string $name): Table
