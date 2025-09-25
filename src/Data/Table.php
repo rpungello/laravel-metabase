@@ -14,27 +14,26 @@ use Spatie\LaravelData\Data;
 class Table extends Data
 {
     /**
-     * @param Collection<int, Field> $fields
+     * @param  Collection<int, Field>  $fields
      */
     public function __construct(
-        public string     $name,
-        public ?string    $description,
+        public string $name,
+        public ?string $description,
         #[DataCollectionOf(Field::class)]
         public Collection $fields,
-    )
-    {
-    }
+    ) {}
 
     /**
      * @throws ItemNotFoundException
      */
     public function getField(string $name): Field
     {
-        return $this->fields->firstOrFail(fn(Field $field) => $field->name === $name);
+        return $this->fields->firstOrFail(fn (Field $field) => $field->name === $name);
     }
 
     /**
-     * @param Closure(Field $field): void $callback
+     * @param  Closure(Field $field): void  $callback
+     *
      * @throws RequestException
      * @throws ConnectionException
      */
