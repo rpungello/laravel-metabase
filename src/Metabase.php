@@ -5,6 +5,7 @@ namespace Rpungello\Metabase;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 use Rpungello\Metabase\Data\Database;
@@ -48,6 +49,30 @@ readonly class Metabase
     }
 
     /**
+     * @throws RequestException
+     * @throws ConnectionException
+     */
+    public function syncSchema(Database|int $database): bool
+    {
+        $id = is_int($database) ? $database : $database->id;
+
+        $response = $this->post("database/$id/sync_schema");
+        return Arr::get($response, 'status') === 'ok';
+    }
+
+    /**
+     * @throws RequestException
+     * @throws ConnectionException
+     */
+    public function scanValues(Database|int $database): bool
+    {
+        $id = is_int($database) ? $database : $database->id;
+
+        $response = $this->post("database/$id/rescan_values");
+        return Arr::get($response, 'status') === 'ok';
+    }
+
+    /**
      * @throws ConnectionException
      * @throws RequestException
      */
@@ -64,6 +89,28 @@ readonly class Metabase
     {
         try {
             return $this->pendingRequest()->put($uri, $data)->json();
+        } catch (RequestException $ex) {
+            $json = json_decode($ex->response->getBody()->getContents(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw $ex;
+            }
+
+            if (! empty($errors = $json['specific-errors'])) {
+                throw ValidationException::withMessages($errors);
+            }
+
+            throw $ex;
+        }
+    }
+
+    /**
+     * @throws ConnectionException
+     * @throws RequestException
+     */
+    private function post(string $uri, ?Data $data = null): array
+    {
+        try {
+            return $this->pendingRequest()->post($uri, $data ?: [])->json();
         } catch (RequestException $ex) {
             $json = json_decode($ex->response->getBody()->getContents(), true);
             if (json_last_error() !== JSON_ERROR_NONE) {
