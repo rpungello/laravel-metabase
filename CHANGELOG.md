@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-metabase` will be documented in this file.
 
+## 0.3.3 - 2025-09-26
+
+Fix non-validation errors
+
 ## 0.3.2 - 2025-09-26
 
 Fix typehinting
