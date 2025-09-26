@@ -57,6 +57,7 @@ readonly class Metabase
         $id = is_int($database) ? $database : $database->id;
 
         $response = $this->post("database/$id/sync_schema");
+
         return Arr::get($response, 'status') === 'ok';
     }
 
@@ -69,6 +70,7 @@ readonly class Metabase
         $id = is_int($database) ? $database : $database->id;
 
         $response = $this->post("database/$id/rescan_values");
+
         return Arr::get($response, 'status') === 'ok';
     }
 
