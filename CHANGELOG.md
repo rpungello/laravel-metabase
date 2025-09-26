@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-metabase` will be documented in this file.
 
+## 0.3.6 - 2025-09-26
+
+Minor tweaks to exception handling
+
 ## 0.3.5 - 2025-09-26
 
 Avoid exceptions by default when using `Table::updateField()`
