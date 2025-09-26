@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-metabase` will be documented in this file.
 
+## 0.3.4 - 2025-09-26
+
+Added `Share` to `SemanticType` enum
+
 ## 0.3.3 - 2025-09-26
 
 Fix non-validation errors
