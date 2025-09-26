@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-metabase` will be documented in this file.
 
+## 0.3.0 - 2025-09-26
+
+- Added helper for syncing schema
+- Added helper for re-scanning values
+
 ## 0.2.0 - 2025-09-25
 
 Added field settings
