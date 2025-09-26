@@ -29,7 +29,7 @@ class Database extends Model
      * @throws RequestException
      * @throws ConnectionException
      */
-    public function toData(): Database
+    public function toData(): \Rpungello\Metabase\Data\Database
     {
         return Metabase::getDatabase($this->database_id);
     }
