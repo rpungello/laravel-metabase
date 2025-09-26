@@ -37,18 +37,19 @@ class Table extends Data
      *
      * @throws RequestException
      * @throws ConnectionException
+     * @throws ItemNotFoundException
      */
-    public function updateField(string $name, Closure $callback, bool $throw = false): self
+    public function updateField(string $name, Closure $callback, bool $throwOnMissing = false): self
     {
         try {
             $field = $this->getField($name);
             $callback($field);
             Metabase::updateField($field);
-        } catch (RequestException|ConnectionException $e) {
-            if ($throw) {
+        } catch (ItemNotFoundException $e) {
+            if ($throwOnMissing) {
                 throw $e;
             } else {
-                Log::warning("Unable to update Metabase field $name on $this->name: {$e->getMessage()}");
+                Log::warning("Unable to update missing Metabase field $name on $this->name");
             }
         }
 
