@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ItemNotFoundException;
 use Rpungello\Metabase\Facades\Metabase;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
@@ -37,11 +38,19 @@ class Table extends Data
      * @throws RequestException
      * @throws ConnectionException
      */
-    public function updateField(string $name, Closure $callback): self
+    public function updateField(string $name, Closure $callback, bool $throw = false): self
     {
-        $field = $this->getField($name);
-        $callback($field);
-        Metabase::updateField($field);
+        try {
+            $field = $this->getField($name);
+            $callback($field);
+            Metabase::updateField($field);
+        } catch (RequestException|ConnectionException $e) {
+            if ($throw) {
+                throw $e;
+            } else {
+                Log::warning("Unable to update Metabase field $name on $this->name: {$e->getMessage()}");
+            }
+        }
 
         return $this;
     }
