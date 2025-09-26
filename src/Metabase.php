@@ -52,7 +52,7 @@ readonly class Metabase
      * @throws RequestException
      * @throws ConnectionException
      */
-    public function syncSchema(Database|int $database): bool
+    public function syncSchema(Database|DatabaseMetadata|int $database): bool
     {
         $id = is_int($database) ? $database : $database->id;
 
@@ -65,7 +65,7 @@ readonly class Metabase
      * @throws RequestException
      * @throws ConnectionException
      */
-    public function scanValues(Database|int $database): bool
+    public function scanValues(Database|DatabaseMetadata|int $database): bool
     {
         $id = is_int($database) ? $database : $database->id;
 
