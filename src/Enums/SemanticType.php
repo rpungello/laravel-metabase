@@ -26,4 +26,5 @@ enum SemanticType: string
     case Percentage = 'type/Percentage';
     case Latitude = 'type/Latitude';
     case Longitude = 'type/Longitude';
+    case Share = 'type/Share';
 }
