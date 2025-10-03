@@ -4,15 +4,18 @@ namespace Rpungello\Metabase\Data;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
+use Rpungello\Metabase\Enums\Engine;
 use Rpungello\Metabase\Facades\Metabase;
 use Spatie\LaravelData\Data;
 
 class Database extends Data
 {
     public function __construct(
-        public ?int $id,
         public string $name,
-        public ?string $description,
+        public Engine $engine,
+        public Connection $details,
+        public ?string $description = null,
+        public ?int $id = null,
         public array $features = [],
     ) {}
 

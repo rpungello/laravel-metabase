@@ -38,6 +38,17 @@ readonly class Metabase
     }
 
     /**
+     * @throws RequestException
+     * @throws ConnectionException
+     */
+    public function createDatabase(Database $database): Database
+    {
+        return Database::from(
+            $this->post("database", $database)
+        );
+    }
+
+    /**
      * @throws ConnectionException
      * @throws RequestException
      */
