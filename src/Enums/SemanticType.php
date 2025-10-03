@@ -27,4 +27,5 @@ enum SemanticType: string
     case Latitude = 'type/Latitude';
     case Longitude = 'type/Longitude';
     case Share = 'type/Share';
+    case Json = 'type/SerializedJSON';
 }
