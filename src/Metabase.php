@@ -44,7 +44,7 @@ readonly class Metabase
     public function createDatabase(Database $database): Database
     {
         return Database::from(
-            $this->post("database", $database)
+            $this->post('database', $database)
         );
     }
 
