@@ -119,8 +119,8 @@ readonly class Metabase
                 throw $ex;
             }
 
-            if (! empty($errors = $json['specific-errors'])) {
-                throw ValidationException::withMessages($errors);
+            if (! empty($json['specific-errors'])) {
+                throw ValidationException::withMessages($json['specific-errors']);
             }
 
             throw $ex;
